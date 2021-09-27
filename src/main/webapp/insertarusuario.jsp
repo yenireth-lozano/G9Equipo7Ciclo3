@@ -77,13 +77,16 @@
 						onclick="window.location.href='/insertarusuario.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar usuario
 					</button>
-					<button type="button" class="btn btn-danger">
+					<button type="button" class="btn btn-danger"
+						onclick="window.location.href='/eliminarusuario.jsp'">
 						<i class="fas fa-trash"></i> Eliminar usuario
 					</button>
-					<button type="button" class="btn btn-outline-secondary">
+					<button type="button" class="btn btn-outline-secondary"
+						onclick="window.location.href='/actualizarusuario.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar usuario
 					</button>
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn btn-primary"
+						onclick="window.location.href='/buscarusuario.jsp'">
 						<i class="fas fa-search"></i> Buscar un usuario
 					</button>
 					<button type="button" class="btn btn-outline-dark"
@@ -93,9 +96,6 @@
 				</div>
 
 			</div>
-		</div>
-
-	</div>
 
 	<div style="padding-left: 5px">
 		<h5>
@@ -126,37 +126,30 @@
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">Nombre completo</span>
+					<span class="input-group-text" id="basic-addon3">Nombrecompleto</span>
 					<input type="text" class="form-control"
-						placeholder="Inserte nombre aqui..."
+						placeholder="Inserte nonbre aqui..."
 						aria-describedby="basic-addon3" required id="nombre_usuario">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Usuario</span> <input
+					<span class="input-group-text" id="basic-addon4">Username</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte usuario aqui..."
+						placeholder="Inserte username aqui..."
 						aria-describedby="basic-addon4" required id="user">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon5">Contraseña</span> <input
+					<span class="input-group-text" id="basic-addon5">Password</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte su contraseña aqui..."
+						placeholder="Inserte password aqui..."
 						aria-describedby="basic-addon5" required id="password">
 				</div>
-
-
-
 			</form>
 
 			<button type="button" class="btn btn-success" onclick="enviar()">
 				<i class="fas fa-check"></i> Insertar nuevo usuario
 			</button>
-
-
-
-
 	
 	<nav class="navbar fixed-bottom navbar-light" style="background-color: #9a8f97;">
 		<div class="grid" style="--bs-columns: 18; --bs-gap: .5rem;">

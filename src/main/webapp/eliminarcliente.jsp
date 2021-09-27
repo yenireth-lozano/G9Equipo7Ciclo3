@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Insertando cliente</title>
+<title>Eliminar cliente</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -70,10 +70,10 @@
   </div>
 </nav>
 
-	<h5><i class="fas fa-cogs"></i> Operaciones	</h5>
-			<div class="container">
-				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<button type="button" class="btn btn-outline-success"
+<h5><i class="fas fa-cogs"></i> Operaciones	</h5>
+		<div class="container">
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button type="button" class="btn btn-outline-success"
 						onclick="window.location.href='/insertarcliente.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar cliente
 					</button>
@@ -81,146 +81,116 @@
 						onclick="window.location.href='/eliminarcliente.jsp'">
 						<i class="fas fa-trash"></i> Eliminar cliente
 					</button>
-					<button type="button" class="btn btn-outline-secondary" 
+					<button type="button" class="btn btn-outline-secondary"
 						onclick="window.location.href='/actualizarcliente.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar cliente
 					</button>
-					<button type="button" class="btn btn-primary" 
+					<button type="button" class="btn btn-primary"
 						onclick="window.location.href='/buscarcliente.jsp'">
 						<i class="fas fa-search"></i> Buscar un cliente
 					</button>
 					<button type="button" class="btn btn-outline-dark"
-					onclick="window.location.href='/listacliente.jsp'">
+					onclick="window.location.href='/listaclientes.jsp'">
 						<i class="fas fa-list"></i> Listar todos los clientes
 					</button>
 				</div>
 
 			</div>
+		</div>
+
+	</div>
+
 	<div style="padding-left: 5px">
 		<h5>
-			<i class="fas fa-plus-circle"></i> Datos del nuevo cliente
+			<i class="fas fa-plus-circle"></i> Datos del cliente a eliminar
 		</h5>
 		<div class="container">
 		
 		
 			<div id="error" class="alert alert-danger visually-hidden"
-					role="alert">Error al crear el cliente, verifique que no exista un cliente con la cedula y cliente dados</div>
+					role="alert">Error al eliminar el cliente, verifique que 
+				exista un cliente con numero de cedula ingresado</div>
 					
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Cliente creado con exito</div>
+				role="alert">cliente eliminado con exito</div>
 
-		<form id="form1">
-			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon1">Cedula</span> <input
-					type="text" class="form-control"
-					placeholder="Inserte cedula aqui..."
-					aria-describedby="basic-addon1" required id="cedula_cliente">
-			</div>
-
-			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon2">Direccion</span> <input
-					type="text" class="form-control"
-					placeholder="Inserte direccion aqui..."
-					aria-describedby="basic-addon2" required id="direccion_cliente">
-			</div>
-
+			<form id="form1">
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">Email_cliente</span>
-					<input type="text" class="form-control"
-					placeholder="Inserte email aqui..."
-					aria-describedby="basic-addon3" required id="email_cliente">
-				</div>
-
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Nombre</span> <input
+					<span class="input-group-text" id="basic-addon1">Cedula</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte nombre aqui..."
-						aria-describedby="basic-addon4" required id="nombre_cliente">
+						placeholder="Inserte cedula aqui..."
+						aria-describedby="basic-addon1" required id="cedula_cliente">
 				</div>
+				
+			</form>
 
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon5">Telefono</span> <input
-						type="text" class="form-control"
-						placeholder="Inserte telefono aqui..."
-						aria-describedby="basic-addon5" required id="telefono_cliente">
-				</div>
-			</div>
-		 	</div>
-		
-
-			<button type="button" class="btn btn-success" onclick="enviar()">
-				<i class="fas fa-check"></i> Insertar nuevo Cliente
+			<button type="button" class="btn btn-danger" onclick="eliminar()">
+				<i class="fas fa-skull-crossbones"></i> Eliminar cliente
 			</button>
 
+
+
+
+	
 	<nav class="navbar fixed-bottom navbar-light" style="background-color: #9a8f97;">
 		<div class="grid" style="--bs-columns: 18; --bs-gap: .5rem;">
   			<div class="g-col-4">
   			</div>
 		</div>
-			<a class="navbar-brand links" href="#"><i class="fas fa-cubes"></i>Diseñado y programado por Scrum 7 
+			<a class="navbar-brand links" href="#"><i class="fas fa-cubes"></i>
+			Diseñado y programado por Scrum 7 
 			</a>
   	</nav>
 	<script>
-		function enviar() {
-			
+		function eliminar() {
 			var y = document.getElementById("cedula_cliente").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
 			req.open('GET', 'http://localhost:8080/listacliente', false);
 			req.send(null);
-			var cliente=null;
+			var cliente = null;
 			if (req.status == 200)
-				cliente=JSON.parse(req.responseText);
-			  	console.log(JSON.parse(req.responseText));
-			  	
-			for (i = 0; i < cliente.length; i++) {
-				console.log(cliente[i].cliente);
-				console.log(cliente[i].cedula_cliente);
+				cliente = JSON.parse(req.responseText);
+			console.log(JSON.parse(req.responseText));
 
+			for (i = 0; i < cliente.length; i++) {
 				
-				if (cliente[i].cedula_cliente ==y ) {
-					console.log(cliente[i].cedula_cliente +" "+y);	
-					coincidencia =true
+				console.log(cliente[i].cedula_cliente);
+				if (cliente[i].cedula_cliente == y) {
+					console.log(cliente[i].cedula_cliente + " " + y);
+					coincidencia = true
 					break;
 				}
 			}
-			console.log(coincidencia);	
-			
-			if (coincidencia==false){
-				var formData = new FormData();
-	 			formData.append("cedula_cliente", document.getElementById("cedula_cliente").value);
-	 			formData.append("direccion_cliente", document.getElementById("direccion_cliente").value);
-	 			formData.append("email_cliente", document.getElementById("email_cliente").value);
-	 			formData.append("nombre_cliente",document.getElementById("nombre_cliente").value);
-	 			formData.append("telefono_cliente",document.getElementById("telefono_cliente").value);
-	 			var xhr = new XMLHttpRequest();
-	 			xhr.open("POST", "http://localhost:8080/registrarcliente");
-	 			
+			console.log(coincidencia);
+
+			if (coincidencia != false) {
+				var cedula=document.getElementById("cedula_cliente").value;
+				
+				var xhr = new XMLHttpRequest();
+				xhr.open("DELETE", "http://localhost:8080/eliminarcliente?cedula_cliente="+cedula);
+				
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
+				
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
-				
-				document.getElementById("cedula_cliente").value = "";
-				document.getElementById("direccion_cliente").value = "";
-				document.getElementById("email_cliente").value = "";
-				document.getElementById("nombre_cliente").value = "";
-				document.getElementById("telefono_cliente").value = "";
-	 			xhr.send(formData);
 
-			}else{
+				document.getElementById("cedula_cliente").value = "";
+				xhr.send();
+
+			} else {
 				var element = document.getElementById("error");
 				element.classList.remove("visually-hidden");
+				
 				var element2 = document.getElementById("correcto");
 				element2.classList.add("visually-hidden");
-				document.getElementById("cedula_cliente").value = "";
-				document.getElementById("direccion_cliente").value = "";
-				document.getElementById("email_cliente").value = "";
-				document.getElementById("nombre_cliente").value = "";
-				document.getElementById("telefono_cliente").value = "";
-			}	
+				
+				document.getElementById("cedula_cliente").value = "";;
+			}
 		}
 	</script>
+
 
 </body>
 </html>

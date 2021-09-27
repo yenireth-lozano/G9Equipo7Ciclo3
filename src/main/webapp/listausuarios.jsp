@@ -103,15 +103,20 @@
 		<h5><i class="fas fa-cogs"></i> Operaciones</h5>
 			<div class="container">
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<button type="button" class="btn btn-outline-success" onclick="window.location.href='/insertarusuario.jsp'">
+					<button type="button" class="btn btn-outline-success" 
+						onclick="window.location.href='/insertarusuario.jsp'">
 					<i class="fas fa-plus-circle"></i> Agregar usuario</button>
-					<button type="button" class="btn btn-danger">
+					<button type="button" class="btn btn-danger"
+						onclick="window.location.href='/eliminarusuario.jsp'">
 					<i class="fas fa-trash"></i> Eliminar usuario</button>
-					<button type="button" class="btn btn-outline-secondary">
+					<button type="button" class="btn btn-outline-secondary"
+						onclick="window.location.href='/actualizarusuario.jsp'">
 					<i class="fas fa-pen-alt"></i> Actualizar usuario</button>
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn btn-primary"
+						onclick="window.location.href='/buscarusuario.jsp'">
 					<i class="fas fa-search"></i> Buscar un usuario</button>
-					<button type="button" class="btn btn-outline-dark">
+					<button type="button" class="btn btn-outline-dark" 
+						onclick="window.location.href='/listarusuario.jsp'">
 					<i class="fas fa-list"></i> Listar todos los usuarios</button>
 				</div>
 			</div>

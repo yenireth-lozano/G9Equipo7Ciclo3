@@ -105,15 +105,20 @@
 		<h5><i class="fas fa-cogs"></i> Operaciones</h5>
 			<div class="container">
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<button type="button" class="btn btn-outline-success" onclick="window.location.href='/insertarcliente.jsp'">
+					<button type="button" class="btn btn-outline-success" 
+						onclick="window.location.href='/insertarcliente.jsp'">
 					<i class="fas fa-plus-circle"></i> Agregar cliente</button>
-					<button type="button" class="btn btn-danger">
+					<button type="button" class="btn btn-danger"
+						onclick="window.location.href='/eliminarcliente.jsp'">
 					<i class="fas fa-trash"></i> Eliminar cliente</button>
-					<button type="button" class="btn btn-outline-secondary">
+					<button type="button" class="btn btn-outline-secondary" 
+						onclick="window.location.href='/actualizarcliente.jsp'">
 					<i class="fas fa-pen-alt"></i> Actualizar cliente</button>
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn btn-primary" 
+						onclick="window.location.href='/buscarcliente.jsp'">
 					<i class="fas fa-search"></i> Buscar un cliente</button>
-					<button type="button" class="btn btn-outline-dark">
+					<button type="button" class="btn btn-outline-dark"
+						onclick="window.location.href='/listacliente.jsp'">
 					<i class="fas fa-list"></i> Listar todos los cliente</button>
 				</div>
 			</div>

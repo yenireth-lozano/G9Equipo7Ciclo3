@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Actualizar usuario</title>
+<title>Buscar cliente</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -74,24 +74,24 @@
 		<div class="container">
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 				<button type="button" class="btn btn-outline-success"
-						onclick="window.location.href='/insertarusuario.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar usuario
+						onclick="window.location.href='/insertarcliente.jsp'">
+						<i class="fas fa-plus-circle"></i> Agregar cliente
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarusuario.jsp'">
-						<i class="fas fa-trash"></i> Eliminar usuario
+						onclick="window.location.href='/eliminarcliente.jsp'">
+						<i class="fas fa-trash"></i> Eliminar cliente
 					</button>
 					<button type="button" class="btn btn-outline-secondary" 
-						onclick="window.location.href='/actualizarusuario.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar usuario
+						onclick="window.location.href='/actualizarcliente.jsp'">
+						<i class="fas fa-pen-alt"></i> Actualizar cliente
 					</button>
 					<button type="button" class="btn btn-primary" 
-						onclick="window.location.href='/buscarusuario.jsp'">
-						<i class="fas fa-search"></i> Buscar un usuario
+						onclick="window.location.href='/buscarcliente.jsp'">
+						<i class="fas fa-search"></i> Buscar un cliente
 					</button>
 					<button type="button" class="btn btn-outline-dark"
-					onclick="window.location.href='/listausuarios.jsp'">
-						<i class="fas fa-list"></i> Listar todos los usuarios
+					onclick="window.location.href='/listacliente.jsp'">
+						<i class="fas fa-list"></i> Listar todos los clientes
 					</button>
 				</div>
 
@@ -102,63 +102,74 @@
 
 	<div style="padding-left: 5px">
 		<h5>
-			<i class="fas fa-plus-circle"></i> Datos a actualizar del usuario
+			<i class="fas fa-plus-circle"></i> Buscando un cliente
 		</h5>
 		<div class="container">
+		
+		
 			<div id="error" class="alert alert-danger visually-hidden"
-					role="alert">Error al actualizar el usuario, verifique que la cedula y usuario dados sean validos</div>
+					role="alert">Error al buscar el cliente, el cliente no existe</div>
 					
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Usuario actualizado con exito</div>
+				role="alert">Cliente encontrado con exito</div>
 
 			<form id="form1">
+			
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon4">Cliente a buscar</span> <input
+						type="text" class="form-control"
+						placeholder="Inserte cedula del cliente aqui..."
+						aria-describedby="basic-addon4" required id="cedula_cliente" >
+				</div>
+				<br>
+				<br>
+				<br>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Cedula</span> <input
 						type="text" class="form-control"
 						placeholder="Inserte cedula aqui..."
-						aria-describedby="basic-addon1" required id="cedula_usuario">
+						aria-describedby="basic-addon1" required id="cedula_cliente" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon2">Email</span> <input
+					<span class="input-group-text" id="basic-addon2">Direccion</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte email aqui..."
-						aria-describedby="basic-addon2" required id="email_usuario">
+						placeholder="Inserte direccion del cliente aqui..."
+						aria-describedby="basic-addon2" required id="direccion_cliente" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">Nombre completo</span>
+					<span class="input-group-text" id="basic-addon3">Email</span>
 					<input type="text" class="form-control"
-						placeholder="Inserte nombre aqui..."
-						aria-describedby="basic-addon3" required id="nombre_usuario">
+						placeholder="Inserte email aqui..."
+						aria-describedby="basic-addon3" required id="email_cliente" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Usuario</span> <input
+					<span class="input-group-text" id="basic-addon4">Nombre</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte usuario aqui..."
-						aria-describedby="basic-addon4" required id="user">
+						placeholder="Inserte nombre del cliente aqui..."
+						aria-describedby="basic-addon4" required id="nombre_cliente" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon5">Contraseña</span> <input
+					<span class="input-group-text" id="basic-addon5">Telefono</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte su contraseña aqui..."
-						aria-describedby="basic-addon5" required id="password">
+						placeholder="Inserte numero de telefono aqui..."
+						aria-describedby="basic-addon5" required id="telefono_cliente" disabled="disabled">
 				</div>
 
 
 
 			</form>
 
-			<button type="button" class="btn btn-secondary" onclick="actualizar()">
-				<i class="fas fa-user-edit"></i> Actualizar usuario
+			<button type="button" class="btn btn-primary" onclick="enviar()">
+				<i class="fas fa-search-plus"></i> Buscar cliente
 			</button>
+			<br>
+			<br>
+			<br>
 
-
-
-
-	
 	<nav class="navbar fixed-bottom navbar-light" style="background-color: #9a8f97;">
 		<div class="grid" style="--bs-columns: 18; --bs-gap: .5rem;">
   			<div class="g-col-4">
@@ -168,72 +179,49 @@
 			</a>
   	</nav>
 	<script>
-		function actualizar() {
-			var x = document.getElementById("user").value;
-			var y = document.getElementById("cedula_usuario").value;
-			var req = new XMLHttpRequest();
-			var coincidencia = false;
-			req.open('GET', 'http://localhost:8080/listarusuarios', false);
-			req.send(null);
-			var usuarios = null;
-			if (req.status == 200)
-				usuarios = JSON.parse(req.responseText);
-			console.log(JSON.parse(req.responseText));
+		function enviar() {
 
-			for (i = 0; i < usuarios.length; i++) {
-				console.log(usuarios[i].usuario);
-				console.log(usuarios[i].cedula_usuario);
-				if (usuarios[i].usuario == x) {
-					console.log(usuarios[i].usuario + " " + x);
-					coincidencia = true
-					break;
-				}
-
-				if (usuarios[i].cedula_usuario == y) {
-					console.log(usuarios[i].cedula_usuario + " " + y);
-					coincidencia = true
-					break;
-				}
-			}
-			console.log(coincidencia);
-
-			if (coincidencia != false) {
-				var formData = new FormData();
-				formData.append("cedula_usuario", document
-						.getElementById("cedula_usuario").value);
-				formData.append("email_usuario", document
-						.getElementById("email_usuario").value);
-				formData.append("nombre_usuario", document
-						.getElementById("nombre_usuario").value);
-				formData.append("password",
-						document.getElementById("password").value);
-				formData.append("usuario",
-						document.getElementById("user").value);
-				var xhr = new XMLHttpRequest();
-				xhr.open("PUT", "http://localhost:8080/actualizarusuarios");
+				
+				var req = new XMLHttpRequest();
+				var coincidencia = false;
+				var cedula_cliente=   document.getElementById("cedula_cliente").value;
+				req.open('GET', 'http://localhost:8080/consultarcliente?cedula_cliente='+cedula_cliente, false);
+				req.send(null);
+				var cliente = null;
+				if (req.status == 200)
+					cliente = JSON.parse(req.responseText);
+				console.log(JSON.parse(req.responseText));
+				
+			
 
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
+				
+				console.log(cliente.toString());
+				
+			if (cliente.toString()!=""){
 
-				document.getElementById("cedula_usuario").value = "";
-				document.getElementById("email_usuario").value = "";
-				document.getElementById("nombre_usuario").value = "";
-				document.getElementById("password").value = "";
-				document.getElementById("user").value = "";
-				xhr.send(formData);
+				document.getElementById("cedula_cliente").value = cliente[0].cedula_cliente;
+				document.getElementById("direccion_cliente").value = cliente[0].direccion_cliente;
+				document.getElementById("email_cliente").value = cliente[0].email_cliente;
+				document.getElementById("nombre_cliente").value = cliente[0].nombre_cliente;
+				document.getElementById("telefono_cliente").value = cliente[0].telefono_cliente;
+				
+				document.getElementById("cedula_cliente").value = "";
+			
 
 			} else {
 				var element = document.getElementById("error");
 				element.classList.remove("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.add("visually-hidden");
-				document.getElementById("cedula_usuario").value = "";
-				document.getElementById("email_usuario").value = "";
-				document.getElementById("nombre_usuario").value = "";
-				document.getElementById("password").value = "";
-				document.getElementById("user").value = "";
+				document.getElementById("cedula_cliente").value = "";
+				document.getElementById("direccion_cliente").value = "";
+				document.getElementById("email_cliente").value = "";
+				document.getElementById("nombre_cliente").value = "";
+				document.getElementById("telefono_cliente").value = "";
 			}
 		}
 	</script>

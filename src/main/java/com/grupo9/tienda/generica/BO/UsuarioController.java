@@ -28,9 +28,9 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/consultarusuario")
-	public ArrayList<UsuarioVO> consultarUsuarios(String cedula_usuario) {
+	public ArrayList<UsuarioVO> consultarUsuarios(String usuario) {
 		UsuarioDAO Dao = new UsuarioDAO();
-		return Dao.consultarUsuario(cedula_usuario);
+		return Dao.consultarUsuario(usuario);
 	}
 
 	@GetMapping("/listarusuarios")
