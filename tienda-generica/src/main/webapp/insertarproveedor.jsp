@@ -105,38 +105,38 @@
 
 		<form id="form1">
 			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon1">Cedula</span> <input
+				<span class="input-group-text" id="basic-addon1">Nit proveedor</span> <input
 					type="text" class="form-control"
-					placeholder="Inserte cedula aqui..."
-					aria-describedby="basic-addon1" required id="cedula_cliente">
+					placeholder="Inserte nit del proveedor aqui..."
+					aria-describedby="basic-addon1" required id="nit_proveedor">
 			</div>
 
 			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon2">Direccion</span> <input
+				<span class="input-group-text" id="basic-addon2">Ciudad</span> <input
 					type="text" class="form-control"
-					placeholder="Inserte direccion aqui..."
-					aria-describedby="basic-addon2" required id="direccion_cliente">
+					placeholder="Inserte ciudad aqui..."
+					aria-describedby="basic-addon2" required id="ciudad_proveedor">
 			</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">Email_proveedores</span>
+					<span class="input-group-text" id="basic-addon3">Direccion</span>
 					<input type="text" class="form-control"
-					placeholder="Inserte email aqui..."
-					aria-describedby="basic-addon3" required id="email_cliente">
+					placeholder="Inserte direccion aqui..."
+					aria-describedby="basic-addon3" required id="direccion_proveedor">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Nombre</span> <input
+					<span class="input-group-text" id="basic-addon4">Razon Social</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte nombre aqui..."
-						aria-describedby="basic-addon4" required id="nombre_cliente">
+						placeholder="Inserte razon social aqui..."
+						aria-describedby="basic-addon4" required id="nombre_proveedor">
 				</div>
 
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon5">Telefono</span> <input
 						type="text" class="form-control"
 						placeholder="Inserte telefono aqui..."
-						aria-describedby="basic-addon5" required id="telefono_cliente">
+						aria-describedby="basic-addon5" required id="telefono_proveedor">
 				</div>
 			</div>
 		 	</div>
@@ -168,7 +168,6 @@
 			  	console.log(JSON.parse(req.responseText));
 			  	
 			for (i = 0; i < proveedor.length; i++) {
-				console.log(proveedor[i].proveedor);
 				console.log(proveedor[i].nit_proveedor);
 
 				

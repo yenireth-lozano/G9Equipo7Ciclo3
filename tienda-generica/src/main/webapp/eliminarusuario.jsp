@@ -48,7 +48,7 @@
 			<i class="fas fa-address-book"></i> Clientes</a>
 	</li>
  	<li class="nav-item">
-			<a class="navbar-brand links" href="listaproveedores.jsp">
+			<a class="navbar-brand links" href="listaproveedorjsp">
 			<i class="fas fa-truck"></i> Proveedores</a>
 	</li>
   	<li class="nav-item">

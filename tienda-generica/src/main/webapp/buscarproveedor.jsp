@@ -125,7 +125,7 @@
 				<br>
 				<br>
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon1">Nit</span> <input
+					<span class="input-group-text" id="basic-addon1">Nit proveedor</span> <input
 						type="text" class="form-control"
 						placeholder="Inserte nit aqui..."
 						aria-describedby="basic-addon1" required id="nit_proveedor2" disabled="disabled">
@@ -184,7 +184,7 @@
 		
 		var req = new XMLHttpRequest();
 		var coincidencia = false;
-		var cedula_proveedor=   document.getElementById("nit_proveedor").value;
+		var nit_proveedor=   document.getElementById("nit_proveedor").value;
 		req.open('GET', 'http://localhost:8080/consultarproveedor?nit_proveedor='+nit_proveedor, false);
 		req.send(null);
 		var proveedor = null;
