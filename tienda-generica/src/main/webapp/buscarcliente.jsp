@@ -25,7 +25,7 @@
 	crossorigin="anonymous">
 
 <!-- Cargando mi hoja de estilo -->
-<link href="style1.css" rel="stylesheet" type="text/css" />
+<link href="fondo.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -74,23 +74,23 @@
 		<div class="container">
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 				<button type="button" class="btn btn-outline-success"
-						onclick="window.location.href='/insertarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarcliente.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar cliente
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarcliente.jsp'">
 						<i class="fas fa-trash"></i> Eliminar cliente
 					</button>
 					<button type="button" class="btn btn-outline-secondary" 
-						onclick="window.location.href='/actualizarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarcliente.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar cliente
 					</button>
 					<button type="button" class="btn btn-primary" 
-						onclick="window.location.href='/buscarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarcliente.jsp'">
 						<i class="fas fa-search"></i> Buscar un cliente
 					</button>
 					<button type="button" class="btn btn-outline-dark"
-					onclick="window.location.href='/listacliente.jsp'">
+					onclick="window.location.href='<%=request.getContextPath()%>/listacliente.jsp'">
 						<i class="fas fa-list"></i> Listar todos los clientes
 					</button>
 				</div>
@@ -181,11 +181,14 @@
 	<script>
 	function enviar() {
 
+		var getUrl = window.location;
+		var baseUrl = getUrl.protocol + "//" + getUrl.host + "/"
+				+ getUrl.pathname.split('/')[1];
 		
 		var req = new XMLHttpRequest();
 		var coincidencia = false;
 		var cedula_cliente=   document.getElementById("cedula_cliente").value;
-		req.open('GET', 'http://localhost:8080/consultarcliente?cedula_cliente='+cedula_cliente, false);
+		req.open('GET',baseUrl+'/consultarcliente?cedula_cliente='+cedula_cliente, false);
 		req.send(null);
 		var cliente = null;
 		if (req.status == 200)

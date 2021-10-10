@@ -25,7 +25,7 @@
 	crossorigin="anonymous">
 
 <!-- Cargando mi hoja de estilo -->
-<link href="style1.css" rel="stylesheet" type="text/css" />
+<link href="fondo.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -74,23 +74,23 @@
 		<div class="container">
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 				<button type="button" class="btn btn-outline-success"
-						onclick="window.location.href='/insertarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarcliente.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar cliente
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarcliente.jsp'">
 						<i class="fas fa-trash"></i> Eliminar cliente
 					</button>
 					<button type="button" class="btn btn-outline-secondary"
-						onclick="window.location.href='/actualizarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarcliente.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar cliente
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/buscarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarcliente.jsp'">
 						<i class="fas fa-search"></i> Buscar un cliente
 					</button>
 					<button type="button" class="btn btn-outline-dark"
-					onclick="window.location.href='/listaclientes.jsp'">
+					onclick="window.location.href='<%=request.getContextPath()%>/listaclientes.jsp'">
 						<i class="fas fa-list"></i> Listar todos los clientes
 					</button>
 				</div>
@@ -143,10 +143,14 @@
   	</nav>
 	<script>
 		function eliminar() {
+			
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			
 			var y = document.getElementById("cedula_cliente").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			req.open('GET', 'http://localhost:8080/listacliente', false);
+			req.open('GET',baseUrl+'/listacliente', false);
 			req.send(null);
 			var cliente = null;
 			if (req.status == 200)
@@ -168,7 +172,7 @@
 				var cedula=document.getElementById("cedula_cliente").value;
 				
 				var xhr = new XMLHttpRequest();
-				xhr.open("DELETE", "http://localhost:8080/eliminarcliente?cedula_cliente="+cedula);
+				xhr.open("DELETE",baseUrl+"/eliminarcliente?cedula_cliente="+cedula);
 				
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");

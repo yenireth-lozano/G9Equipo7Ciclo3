@@ -3,11 +3,11 @@ package com.grupo9.tienda.generica.DAO;
 import java.sql.*;
 
 public class Conexion {
-	String nombre_bd="tiendagenerica9";
-	String usuario_bd="root";
-	String password_bd="mintic";
+	String nombre_bd="g9e7";
+	String usuario_bd="admin";
+	String password_bd="minticroca";
 	//127.0.0.1==localhost
-	String URL="jdbc:mysql://127.0.0.1/"+nombre_bd;
+	String URL="jdbc:mysql://tiendasgenericasdr-g9-g38-53.czo3ixoe3xoe.us-east-1.rds.amazonaws.com/"+nombre_bd;
 	
 	//objeto sin inicializar de la conexión
 		Connection connection = null;

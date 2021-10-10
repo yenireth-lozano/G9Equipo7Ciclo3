@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Lista de proveedores</title>
+<title>Lista de productos</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -32,32 +32,33 @@
 
 	var getUrl = window.location;
 	var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-
-	var baseurl =baseUrl+"/listaproveedor";
-	function loadproveedor() {
+		
+	var baseurl =baseUrl+"/listaproductos";
+	function loadproductos() {
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET", baseurl, true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				var proveedor = JSON.parse(xmlhttp.responseText);
-				var tbltop = "<table class='table table-secondary table-striped'><tr><th>Nit</th><th>Ciudad</th><th>Direccion</th><th>Nombre</th><th>Telefono</th></tr>";
+				var productos = JSON.parse(xmlhttp.responseText);
+				var tbltop = "<table class='table table-secondary table-striped'><tr><th>Codigo</th><th>Nombre del producto</th><th>Nit proveedor</th><th>Precio de compra</th><th>Iva</th><th>Precio de Venta</th></tr>";
 				var main = "";
-				for (i = 0; i < proveedor.length; i++) {
-					main += "<tr><td>" + proveedor[i].nit_proveedor
-							+ "</td><td>" + proveedor[i].ciudad_proveedor
-							+ "</td><td>" + proveedor[i].direccion_proveedor
-							+ "</td><td>" + proveedor[i].nombre_proveedor + "</td><td>"
-							+ proveedor[i].telefono_proveedor + "</td></tr>";
+				for (i = 0; i < productos.length; i++) {
+					main += "<tr><td>" + productos[i].codigo_producto
+							+ "</td><td>" + productos[i].nombre_producto
+							+ "</td><td>" + productos[i].nit_proveedor
+							+ "</td><td>" + productos[i].precio_compra
+							+ "</td><td>" + productos[i].iva_compra + "</td><td>"
+							+ productos[i].precio_venta + "</td></tr>";
 				}
 				var tblbottom = "</table>";
 				var tbl = tbltop + main + tblbottom;
-				document.getElementById("proveedorinfo").innerHTML = tbl;
+				document.getElementById("productosinfo").innerHTML = tbl;
 			}
 		};
 		xmlhttp.send();
 	}
 	window.onload = function() {
-		loadproveedor();
+		loadproductos();
 	}
 </script>
 
@@ -110,30 +111,21 @@
 			<div class="container">
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					<button type="button" class="btn btn-outline-success" 
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarproveedor.jsp'">
-					<i class="fas fa-plus-circle"></i> Agregar proveedores</button>
-					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarproveedor.jsp'">
-					<i class="fas fa-trash"></i> Eliminar proveedores</button>
-					<button type="button" class="btn btn-outline-secondary"
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarproveedor.jsp'">
-					<i class="fas fa-pen-alt"></i> Actualizar proveedores</button>
-					<button type="button" class="btn btn-primary" 
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarproveedor.jsp'">
-					<i class="fas fa-search"></i> Buscar un proveedor</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarproductos.jsp'">
+					<i class="fas fa-plus-circle"></i> Agregar productos</button>
 					<button type="button" class="btn btn-outline-dark" 
-						onclick="window.location.href='<%=request.getContextPath()%>/listaproveedor.jsp'">
-					<i class="fas fa-list"></i> Listar todos los proveedores</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/listaproductos.jsp'">
+					<i class="fas fa-list"></i> Listar todos los productos</button>
 				</div>
 			</div>
 	
 	<div style="padding-left: 5px;">
 	
-		<h5><i class="fas fa-list-ol"></i> Tabla de proveedores</h5>
+		<h5><i class="fas fa-list-ol"></i> Tabla de productos</h5>
 			<div class="container">
 				<div class="row">
 					<!--  Aqui es donde se autogenera la tabla basado en el script -->
-					<div class="col align-self-center" id="proveedorinfo">
+					<div class="col align-self-center" id="productosinfo">
 					
 					</div>
 	
@@ -141,15 +133,5 @@
 			</div>
 	</div>
 	
-	<nav class="navbar fixed-bottom navbar-light" style="background-color: #9a8f97;">
-		<div class="grid" style="--bs-columns: 18; --bs-gap: .5rem;">
-  			<div class="g-col-4">
-  			</div>
-		</div>
-			<a class="navbar-brand links" href="#"><i class="fas fa-cubes"></i>Diseñado y programado por Scrum 7 
-			</a>
-  	</nav>
-
-
 </body>
 </html>

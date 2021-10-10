@@ -17,7 +17,7 @@
             integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
             crossorigin="anonymous">
       <!-- Cargando mi hoja de estilo -->
-      <link href="style1.css" rel="stylesheet" type="text/css" />
+      <link href="fondo.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>

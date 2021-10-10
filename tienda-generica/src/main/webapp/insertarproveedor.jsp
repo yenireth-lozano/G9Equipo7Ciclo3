@@ -25,7 +25,7 @@
 	crossorigin="anonymous">
 
 <!-- Cargando mi hoja de estilo -->
-<link href="style1.css" rel="stylesheet" type="text/css" />
+<link href="fondo.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -74,19 +74,19 @@
 			<div class="container">
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					<button type="button" class="btn btn-outline-success" 
-						onclick="window.location.href='/insertarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarproveedor.jsp'">
 					<i class="fas fa-plus-circle"></i> Agregar proveedores</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarproveedor.jsp'">
 					<i class="fas fa-trash"></i> Eliminar proveedores</button>
 					<button type="button" class="btn btn-outline-secondary"
-						onclick="window.location.href='/actualizarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarproveedor.jsp'">
 					<i class="fas fa-pen-alt"></i> Actualizar proveedores</button>
 					<button type="button" class="btn btn-primary" 
-						onclick="window.location.href='/buscarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarproveedor.jsp'">
 					<i class="fas fa-search"></i> Buscar un proveedor</button>
 					<button type="button" class="btn btn-outline-dark" 
-						onclick="window.location.href='/listaproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/listaproveedor.jsp'">
 					<i class="fas fa-list"></i> Listar todos los proveedores</button>
 				</div>
 			</div>
@@ -157,10 +157,13 @@
 	<script>
 		function enviar() {
 			
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			
 			var y = document.getElementById("nit_proveedor").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			req.open('GET', 'http://localhost:8080/listaproveedor', false);
+			req.open('GET',baseUrl+'/listaproveedor', false);
 			req.send(null);
 			var proveedor=null;
 			if (req.status == 200)
@@ -187,7 +190,7 @@
 	 			formData.append("nombre_proveedor",document.getElementById("nombre_proveedor").value);
 	 			formData.append("telefono_proveedor",document.getElementById("telefono_proveedor").value);
 	 			var xhr = new XMLHttpRequest();
-	 			xhr.open("POST", "http://localhost:8080/registrarproveedor");
+	 			xhr.open("POST",baseUrl+"/registrarproveedor");
 	 			
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
