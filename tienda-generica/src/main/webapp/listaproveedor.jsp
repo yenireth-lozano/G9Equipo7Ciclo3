@@ -31,12 +31,12 @@
 <script>
 
 	var getUrl = window.location;
-	var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	var baseUrl = getUrl.protocol +"//"+getUrl.host +"/"+getUrl.pathname.split('/')[1];
 
-	var baseurl =baseUrl+"/listaproveedor";
+	var baseUrl =baseUrl+"/listaproveedor";
 	function loadproveedor() {
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", baseurl, true);
+		xmlhttp.open("GET",baseUrl, true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 				var proveedor = JSON.parse(xmlhttp.responseText);

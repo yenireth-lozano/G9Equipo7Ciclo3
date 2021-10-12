@@ -57,10 +57,10 @@
 					aria-describedby="basic-addon1">
 			</div>
 			<div style="margin: auto; text-align: center;">
-				<button type="buttons" class="btn btn-outline-primary" onclick="comparar()">
+				<button type="button" class="btn btn-outline-primary" onclick="comparar()">
 					<i class="fas fa-sign-in-alt"></i> Ingresar
 				</button>
-				<button type="buttons" class="btn btn-outline-success">
+				<button type="button" class="btn btn-outline-success">
 					<i class="fas fa-th-list"></i> Registrarse
 				</button>
 				<div id="error" class="alert alert-danger visually-hidden"
@@ -94,11 +94,14 @@
 			//trayendo texto de input de password
 			var y = document.getElementById("inputpass").value;
 			//url de la api 
-			var baseurl = "http://localhost:8080/listarusuarios";
+			//var baseurl = "http://localhost:8080/listarusuarios";
+			//creando un objeto de manipulacion de solicitudes
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/"+ getUrl.pathname.split('/')[1];
 			//creando un objeto de manipulacion de solicitudes
 			var xmlhttp = new XMLHttpRequest();
 			//abriendo la api
-			xmlhttp.open("GET", baseurl, true);
+			xmlhttp.open("GET", baseUrl+"/listarusuarios", true);
 			//funcion interna que compara la información
 			xmlhttp.onreadystatechange = function() {
 				//si se obtiene un 200 (Conexion correcta)

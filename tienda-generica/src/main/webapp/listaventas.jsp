@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Lista de clientes</title>
+<title>Lista de ventas</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -33,31 +33,33 @@
 	var getUrl = window.location;
 	var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
-	var baseUrl =baseUrl+"/listacliente";
-	function loadcliente() {
+	var baseurl =baseUrl+"/listaventas";
+	function loadventas() {
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", baseUrl, true);
+		xmlhttp.open("GET", baseurl, true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				var cliente = JSON.parse(xmlhttp.responseText);
-				var tbltop = "<table class='table table-secondary table-striped'><tr><th>Cedula</th><th>Direccion</th><th>Email</th><th>Nombre</th><th>Telefono</th></tr>";
+				var ventas = JSON.parse(xmlhttp.responseText);
+				var tbltop = "<table class='table table-secondary table-striped'><tr><th>codigo_venta</th><th>cedula_cliente</th><th>cedula_usuario</th><th>ivaventa</th><th>total_venta</th><th>valor_venta</th></tr>";
 				var main = "";
-				for (i = 0; i < cliente.length; i++) {
-					main += "<tr><td>" + cliente[i].cedula_cliente
-							+ "</td><td>" + cliente[i].direccion_cliente
-							+ "</td><td>" + cliente[i].email_cliente
-							+ "</td><td>" + cliente[i].nombre_cliente + "</td><td>"
-							+ cliente[i].telefono_cliente + "</td></tr>";
+				for (i = 0; i < ventas.length; i++) {
+					main += "<tr><td>" + ventas[i].codigo_venta
+							+ "</td><td>" + ventas[i].cedula_cliente
+							+ "</td><td>" + ventas[i].cedula_usuario
+							+ "</td><td>" + ventas[i].ivaventa 
+							+ "</td><td>" + ventas[i].total_venta
+							+ "</td><td>" + ventas[i].valor_venta 
+							+ "</td></tr>";
 				}
 				var tblbottom = "</table>";
 				var tbl = tbltop + main + tblbottom;
-				document.getElementById("clienteinfo").innerHTML = tbl;
+				document.getElementById("ventasinfo").innerHTML = tbl;
 			}
 		};
 		xmlhttp.send();
 	}
 	window.onload = function() {
-		loadcliente();
+		loadventas();
 	}
 </script>
 
@@ -110,30 +112,30 @@
 			<div class="container">
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					<button type="button" class="btn btn-outline-success" 
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarcliente.jsp'">
-					<i class="fas fa-plus-circle"></i> Agregar cliente</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarventa.jsp'">
+					<i class="fas fa-plus-circle"></i> Agregar venta</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarcliente.jsp'">
-					<i class="fas fa-trash"></i> Eliminar cliente</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarventa.jsp'">
+					<i class="fas fa-trash"></i> Eliminar venta</button>
 					<button type="button" class="btn btn-outline-secondary" 
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarcliente.jsp'">
-					<i class="fas fa-pen-alt"></i> Actualizar cliente</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarventa.jsp'">
+					<i class="fas fa-pen-alt"></i> Actualizar venta</button>
 					<button type="button" class="btn btn-primary" 
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarcliente.jsp'">
-					<i class="fas fa-search"></i> Buscar un cliente</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarventa.jsp'">
+					<i class="fas fa-search"></i> Buscar una venta</button>
 					<button type="button" class="btn btn-outline-dark"
-						onclick="window.location.href='<%=request.getContextPath()%>/listacliente.jsp'">
-					<i class="fas fa-list"></i> Listar todos los cliente</button>
+						onclick="window.location.href='<%=request.getContextPath()%>/listaventas.jsp'">
+					<i class="fas fa-list"></i> Listar todas las ventas</button>
 				</div>
 			</div>
 	
 	<div style="padding-left: 5px;">
 	
-		<h5><i class="fas fa-list-ol"></i> Tabla de clientes</h5>
+		<h5><i class="fas fa-list-ol"></i> Tabla de ventas</h5>
 			<div class="container">
 				<div class="row">
 					<!--  Aqui es donde se autogenera la tabla basado en el script -->
-					<div class="col align-self-center" id="clienteinfo">
+					<div class="col align-self-center" id="ventasinfo">
 					
 					</div>
 	

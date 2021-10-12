@@ -150,7 +150,6 @@
 
 
 			</form>
-
 			<button type="button" class="btn btn-secondary" onclick="actualizar()">
 				<i class="fas fa-user-edit"></i> Actualizar usuario
 			</button>
@@ -170,37 +169,34 @@
 	<script>
 		function actualizar() {
 			
-			var getUrl =  ventana . ubicación ;
-			var baseUrl =  getUrl . protocolo  +  " // "  +  getUrl . host  +  " / "  +  getUrl . nombre de ruta . dividir ( ' / ' ) [ 1 ];
-			
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	
 			var x = document.getElementById("user").value;
 			var y = document.getElementById("cedula_usuario").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			req.open('GET', baseUrl + ' / listausuarios ' , false);
+			req.open('GET', baseUrl+'/listarusuarios', false);
 			req.send(null);
 			var usuarios = null;
 			if (req.status == 200)
 				usuarios = JSON.parse(req.responseText);
 			console.log(JSON.parse(req.responseText));
-
 			for (i = 0; i < usuarios.length; i++) {
 				console.log(usuarios[i].usuario);
 				console.log(usuarios[i].cedula_usuario);
-				if (usuarios[i].usuario == x) {
+				if (usuarios[i].usuario === x) {
 					console.log(usuarios[i].usuario + " " + x);
 					coincidencia = true
 					break;
 				}
-
-				if (usuarios[i].cedula_usuario == y) {
+				if (usuarios[i].cedula_usuario === y) {
 					console.log(usuarios[i].cedula_usuario + " " + y);
 					coincidencia = true
 					break;
 				}
 			}
 			console.log(coincidencia);
-
 			if (coincidencia != false) {
 				var formData = new FormData();
 				formData.append("cedula_usuario", document
@@ -214,20 +210,17 @@
 				formData.append("usuario",
 						document.getElementById("user").value);
 				var xhr = new XMLHttpRequest();
-				xhr.open("PUT", baseUrl + " / actualizarusuarios ");
-
+				xhr.open("PUT", baseUrl+"/actualizarusuarios");
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
-
 				document.getElementById("cedula_usuario").value = "";
 				document.getElementById("email_usuario").value = "";
 				document.getElementById("nombre_usuario").value = "";
 				document.getElementById("password").value = "";
 				document.getElementById("user").value = "";
 				xhr.send(formData);
-
 			} else {
 				var element = document.getElementById("error");
 				element.classList.remove("visually-hidden");
